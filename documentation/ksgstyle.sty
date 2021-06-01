@@ -1,0 +1,101 @@
+% Copyright 2018-2020 Moritz Kiehn
+%
+% Common style for application/proposal documents
+%
+% WARNING assumes lualatex or xetex
+
+\KOMAoptions{fontsize=10}
+
+% load font
+\RequirePackage{fontspec}
+\RequirePackage[math-style=ISO]{unicode-math}
+\RequirePackage{microtype}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[Numbers={Lining},Scale=1.0]{TeX Gyre Pagella}
+\setsansfont[Scale=0.90]{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+\setmathfont{TeX Gyre Pagella Math}
+\linespread{1.1}
+
+\setkomafont{disposition}{\normalfont\itshape}
+\setkomafont{caption}{\footnotesize}
+\setkomafont{captionlabel}{\usekomafont{caption}}
+\setkomafont{descriptionlabel}{\normalfont\itshape}
+\addtokomafont{footnote}{\footnotesize}
+
+% language support
+\RequirePackage{polyglossia}
+\RequirePackage{csquotes}
+\setmainlanguage{english}
+
+% layout
+\RequirePackage[margin=1in,bottom=1.5in]{geometry}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{1ex}
+
+% pre-configured packages
+% \RequirePackage{amsmath}
+\RequirePackage{booktabs}
+\RequirePackage{enumitem}
+\setlist{itemsep=0ex}
+% \setlist{
+%   % vertical spacing
+%   itemsep=0.5ex,
+%   parsep=0pt,
+%   % horizontal spacing
+%   % leftmargin=9em,
+%   itemindent=0pt,
+%   labelindent=0pt,
+%   labelwidth=!,
+%   labelsep=1em,
+%   align=right}
+% \setlist[description]{
+%   style=multiline,
+%   align=right}
+\RequirePackage{hyperref}
+\RequirePackage{siunitx}
+\sisetup{range-phrase=--,range-units=single}
+\RequirePackage[obeyFinal]{todonotes}
+
+% \RequirePackage[
+%   style=numeric-comp,
+%   sorting=ydnt,
+%   firstinits=true,
+%   maxnames=2,
+%   doi=false,
+%   url=false,
+%   isbn=false]{biblatex}
+%
+% % no extra text in citations
+% \renewbibmacro{in:}{}
+% % link title to doi/url/isbn
+% % from https://tex.stackexchange.com/questions/48400
+% \newbibmacro{string+doiurlisbn}[1]{%
+%   \iffieldundef{doi}{%
+%     \iffieldundef{url}{%
+%       \iffieldundef{isbn}{%
+%         \iffieldundef{issn}{%
+%           #1%
+%         }{%
+%           \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
+%         }%
+%       }{%
+%         \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
+%       }%
+%     }{%
+%       \href{\thefield{url}}{#1}%
+%     }%
+%   }{%
+%     \href{http://dx.doi.org/\thefield{doi}}{#1}%
+%   }%
+% }
+% \DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
+% \DeclareFieldFormat[article,incollection]{title}%
+%     {\usebibmacro{string+doiurlisbn}{\mkbibquote{#1}}}
+
+% common extra commands
+\RequirePackage{xspace}
+\newcommand{\st}{\textsuperscript{st}\xspace}
+\newcommand{\nd}{\textsuperscript{nd}\xspace}
+\newcommand{\rd}{\textsuperscript{rd}\xspace}
+\newcommand{\nth}{\textsuperscript{th}\xspace}

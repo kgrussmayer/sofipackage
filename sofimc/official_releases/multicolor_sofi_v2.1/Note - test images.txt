@@ -1,0 +1,8 @@
+Test data are not stored in GIT (test_data folder is empty). These files can be downloaded from google drive
+
+https://drive.google.com/open?id=1HetYhXuwMuaSYiq7gOeu9kEHOA4fT4D_
+
+Test data: 
+Alexa488_Atto565_Alexa647_ZT594RDC_Ion400-thin_PB_80s_reflected_001
+Alexa488_Atto565_Alexa647_ZT594RDC_Ion400-thin_PB_80s_transmitted_001
+\calibration
