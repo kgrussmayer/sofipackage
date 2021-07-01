@@ -26,13 +26,13 @@ fitcurve = a*exp(-x/b)+c;
 if settings.blcor.MaxCorrSamp > size(stack,3)
     settings.blcor.MaxCorrSamp = size(stack,3);
 end
-% [~,corelf] = stackcorel(stack,settings.blcor.MaxCorrSamp);
+[~,corelf] = stackcorel(stack,settings.blcor.MaxCorrSamp);
 
 results.blcor.mitrace = mitrace;
 results.blcor.fitinfo = c2;
 results.blcor.fitcurve = fitcurve;
 results.blcor.xaxis = x;
-% results.blcor.corelf = corelf;
+results.blcor.corelf = corelf;
  
 % plot and save meantrace figure
 if settings.io.figs ==1 
@@ -45,5 +45,4 @@ if settings.io.figs ==1
         [settings.io.imageName,'_meantrace'],settings.io.figformat,0);
     end
 end
-
-end
+% eof

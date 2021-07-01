@@ -6,14 +6,14 @@ function results = estimateton(stack,settings,results)
 %           settings ... struct with all the processing settings
 %           results ... struct for passing intermediate results across the
 %           processing chain
-% output:   
+% output:   results ... struct ton estimate and fitted meantrace
 
-tau=unique(round(logspace(0,log10(settings.ton.wsize/2),settings.ton.numtau)));
+tau=unique(round(logspace(0,log10(settings.ton.subseqlength/2),settings.ton.numtau)));
 
 for nt=1:numel(tau)
 
-stack3Dt = cat(4,stack(:,:,(1: settings.ton.wsize)),...
-                 stack(:,:, 1+tau(nt): settings.ton.wsize+tau(nt))); 
+stack3Dt = cat(4,stack(:,:,(1: settings.ton.subseqlength)),...
+                 stack(:,:, 1+tau(nt): settings.ton.subseqlength+tau(nt))); 
 
 stack3Dt = permute(stack3Dt,[1 2 4 3]);
 [sofi,grid]=sofiCumulants2Dt(stack3Dt,1,[],[],1:2);
@@ -22,7 +22,6 @@ sofitau(:,:,nt) = sofi{2}(:,:,2);
 end
 
 mitrace=soficor;
-%         mitrace = mitrace./max(mitrace);
 s = fitoptions('Method','NonlinearLeastSquares',...
                'Lower',[0,0,0],...
                'Upper',[Inf,Inf,Inf],...
@@ -53,3 +52,4 @@ if settings.io.figs ==1
         [settings.io.imageName,'_ton'],settings.io.figformat,0);
     end
 end
+% eof

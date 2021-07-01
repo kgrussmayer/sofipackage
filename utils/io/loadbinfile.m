@@ -2,7 +2,7 @@ function stack = loadbinfile(pn,fn,N)
 % load stack of images from binary file, function assumes that binary
 % images are in the same folder as "setting.mat" which contains information
 % about acquisition
-% lukestom 27.7.2014
+% Tomas Lukes, tomas.lukes@epfl.ch
 
 fid1=fopen([pn fn]);
 info=dir([pn fn]);
@@ -12,7 +12,7 @@ nx=cam1.ROIPosition(3);
 ny=cam1.ROIPosition(4);
 
 if nargin<3
-N=info.bytes/2/nx/ny;
+    N=info.bytes/2/nx/ny;
 end
 
 k=0;
@@ -23,3 +23,4 @@ while k<N
     disp(['loading.. ',num2str(k)]);
 end
 fclose(fid1);
+% eof

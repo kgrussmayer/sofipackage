@@ -40,5 +40,4 @@ delete(fig);
 if ~isempty(roi)
 stack = stack(roi(1,:),roi(2,:));
 end
-
-
+% eof

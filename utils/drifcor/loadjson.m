@@ -116,6 +116,7 @@ end
 if(isfield(opt,'progressbar_'))
     close(opt.progressbar_);
 end
+% eof
 
 %%-------------------------------------------------------------------------
 function object = parse_object(varargin)
@@ -160,14 +161,14 @@ global pos inStr isoct
             arraystr=['[' inStr(pos:endpos)];
             arraystr=regexprep(arraystr,'"_NaN_"','NaN');
             arraystr=regexprep(arraystr,'"([-+]*)_Inf_"','$1Inf');
-            arraystr(arraystr==sprintf('\n'))=[];
+            arraystr(arraystr==newline)=[];
             arraystr(arraystr==sprintf('\r'))=[];
             %arraystr=regexprep(arraystr,'\s*,',','); % this is slow,sometimes needed
             if(~isempty(e1l) && ~isempty(e1r)) % the array is in 2D or higher D
         	astr=inStr((e1l+1):(e1r-1));
         	astr=regexprep(astr,'"_NaN_"','NaN');
         	astr=regexprep(astr,'"([-+]*)_Inf_"','$1Inf');
-        	astr(astr==sprintf('\n'))=[];
+        	astr(astr==newline)=[];
         	astr(astr==sprintf('\r'))=[];
         	astr(astr==' ')='';
         	if(isempty(find(astr=='[', 1))) % array is 2D

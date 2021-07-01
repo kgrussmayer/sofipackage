@@ -9,20 +9,15 @@ if nargin <5
     bits = 8;
 end
 
-nowID = datestr(now,'ddmmyyyyHHMMSS');
-
-% outputPath = [outputPath, filesep,fileName];
-
 if (~exist(outputPath,'dir'))
     mkdir(outputPath);
 end
 
-% outputFile = [outputPath,filesep,fileName,'_',tag,nowID]; % create unique name with date
 outputFile = [outputPath,filesep,fileName,tag];
 
 stack = stack./max(stack(:));
 
-if bits == 16; stack = uint16(stack.*2^16);end;
+if bits == 16; stack = uint16(stack.*2^16); end
 
 fig = statusbar('Saving image stack...');
 frames = size(stack,3);
@@ -34,5 +29,4 @@ end
 delete(fig);
 
 disp(['figure was succesfully saved into: ',outputFile]);
-
-end
+% eof
