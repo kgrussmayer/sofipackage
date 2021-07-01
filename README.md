@@ -27,22 +27,22 @@ $  git clone https://github.com/kgrussmayer/sofipackage.git
 2. Download test data https://1drv.ms/f/s!Ak84leQ_7uk50BVykhJYSrw5Utgq and move 
 them into ./data folder into the sofipackage repository.
 There should be: 
-./sofi/sofi2d
-./sofi/sofi3d
-./sofi/sofi3mc
-./sofi/sofibiplane
+* `./sofi/sofi2d`
+* `./sofi/sofi3d`
+* `./sofi/sofi3mc`
+* `./sofi/sofibiplane`
 3. Open sofipackage directory in MATLAB. Please make sure that it is set as 
 "current folder" and it appears in the MATLAB path.  
 
-4. Launch tests ./tests/test_expected_results.m
+4. Launch tests `./tests/test_expected_results.m`
 All tests should pass, results and figures will be saved in
 automatically created results folder. The analysis of all the test data should
 take approx. 3min on a standard desktop computer (with at least 16GB RAM).
 
 5. Run your own experiments. Example experiments for all 4 SOFI modalities are 
-in ./experiments this inclused SOFI2D, SOFI3D, SOFI mutlicolor and SOFI biplane. 
-For a new experiment with SOFI3D, create a new copy of "experiment_sofi3d" in a new folder 
-for example ./experiment/sofi3d/20210630. Edit configuration in the new experiment 
+in `./experiments` this includes SOFI2D, SOFI3D, SOFI mutlicolor and SOFI biplane. 
+For a new experiment with SOFI3D, create a new copy of `experiment_sofi3d.m` into a new folder 
+for example `./experiment/sofi3d/20210630`. Edit configuration in the new experiment 
 (change input files, output path etc.). Run the experiment while always keeping sofipackage 
 as the "current folder" in MATLAB.
 
