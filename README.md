@@ -1,42 +1,52 @@
 # SOFI Package
 
-We are currently in the process of cleaning up this repository 
-and adding a proper user manual and testing - stay tuned for updates
-
-TODO: update/adapt all links and descriptions etc
-
-TODO: insert zenodo/doi
-
 SOFI Package is a toolkit for super-resolution optical fluctuation imaging analysis in 2D and 3D.
 
 More information can be found in the [SOFI documentation].
 
 Please cite as: TODO
 
+User manual and documentation is currently under development - stay tuned for updates
+
+SOFI Package is developed in Matlab with the core calculation of cumulants optimized for 
+GPU (implemented in CUDA)and for CPU (C++ code compiled as mex files). 
+
+The code was tested in Matlab R2016b, under Windows 7, Windows 10 and Mac and requires Image Processing Toolbox. 
+No additional software installation is required. If you want to use fast CUDA implementation, please make sure that 
+you have a CUDA compatible graphics card and CUDA related software installed on your computer. For more details 
+about using CUDA, please see notes below.
+
 ## Quick start
 
-SOFI Package is developed in Matlab with the core cumulant
-calculation provided for GPU (CUDA) and for CPU (C++ code implemented via Mexx
-files). 
-
-The code was tested in Matlab R2016b, under Windows 7, Windows 10 and Mac and requires the XXX toolboxes. No additional software installation is required.
-
-The following commands will clone the repository
+1. Clone the repository
 
 ```sh
-$ git clone https://github.com/acts-project/acts <source-dir>
+$  git clone https://github.com/kgrussmayer/sofipackage.git
 ```
 
-To launch the calculation:
+2. Download test data https://1drv.ms/f/s!Ak84leQ_7uk50BVykhJYSrw5Utgq and move 
+them into ./data folder into the sofipackage repository.
+There should be: 
+./sofi/sofi2d
+./sofi/sofi3d
+./sofi/sofi3mc
+./sofi/sofibiplane
+3. Open sofipackage directory in MATLAB. Please make sure that it is set as 
+"current folder" and it appears in the MATLAB path.  
 
-1.  Please make sure that test data are in the same folder together with the code. 
-2.  Run `multicolor_sofi_main.m`
-    
-    All tests should pass, results and figures will be saved in the
-    automatically created results folder. The analysis of the test data should
-    have a runtime of TODO on a standard desktop computer.
+4. Launch tests ./tests/test_expected_results.m
+All tests should pass, results and figures will be saved in
+automatically created results folder. The analysis of all the test data should
+take approx. 3min on a standard desktop computer (with at least 16GB RAM).
 
-If you find a bug, have a feature request, or want to contribute to the SOFI Analysis Software, TODO.
+5. Run your own experiments. Example experiments for all 4 SOFI modalities are 
+in ./experiments this inclused SOFI2D, SOFI3D, SOFI mutlicolor and SOFI biplane. 
+For a new experiment with SOFI3D, create a new copy of "experiment_sofi3d" in a new folder 
+for example ./experiment/sofi3d/20210630. Edit configuration in the new experiment 
+(change input files, output path etc.). Run the experiment while always keeping sofipackage 
+as the "current folder" in MATLAB.
+
+If you find a bug, have a feature request, or want to contribute to the SOFI Analysis Software, get in touch.
 
 ## Using GPU algorithms
 
