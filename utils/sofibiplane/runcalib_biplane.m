@@ -10,7 +10,7 @@ function cal = runcalib_biplane(sys,cal,io)
     end
 
     %% load and prepare calibration data
-    stack = load_tifFile([io.pnc,filesep,io.fnc1,'.tif'],sys.sub);
+    stack = load_tiff([io.pnc,filesep,io.fnc1,'.tif'],sys.sub);
  
     data1 = stack(:,:,1:2:end);
     data2 = stack(:,:,2:2:end);

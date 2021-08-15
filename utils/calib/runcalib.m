@@ -1,4 +1,4 @@
-function cal = runcalib(sys,cal,pn3)
+function cal = runcalib(sys,cal,pnc)
     cfext = sys.fext;
     tf = [];
     
@@ -6,11 +6,11 @@ function cal = runcalib(sys,cal,pn3)
         file1='data1.bin';
         file2='data2.bin';
 
-        load([pn3 filesep 'settings.mat']);
+        load([pnc filesep 'settings.mat']);
 
-        fid1=fopen([pn3 filesep file1]);
-        fid2=fopen([pn3 filesep file2]);
-        cfinfo=dir([pn3 filesep file1]);
+        fid1=fopen([pnc filesep file1]);
+        fid2=fopen([pnc filesep file2]);
+        cfinfo=dir([pnc filesep file1]);
 
         nx=cam1.ROIPosition(3);
         ny=cam1.ROIPosition(4);
@@ -30,7 +30,7 @@ function cal = runcalib(sys,cal,pn3)
         fclose(fid2);
         
     elseif strcmp(cfext,'.dat')
-        calibration_file = [pn3,filesep,'beads'];
+        calibration_file = [pnc,filesep,'beads'];
         % try calibration dat file
         if exist([calibration_file, '.dat'], 'file') 
             fidc = fopen([calibration_file, '.dat']);
@@ -54,7 +54,7 @@ function cal = runcalib(sys,cal,pn3)
         % try calibration tiff file
         elseif exist([calibration_file, '.tif'], 'file')
             
-            dataTemp = loadData([calibration_file, '.tif']);
+            dataTemp = load_tiff([calibration_file, '.tif']);
             data1c = dataTemp(:,:,2:2:end);
             data2c = dataTemp(:,end:-1:1,1:2:end-1);
         else
@@ -67,7 +67,7 @@ function cal = runcalib(sys,cal,pn3)
         
     elseif strcmp(cfext,'.tif') || strcmp(cfext,'.tiff')
 
-        dataTemp = loadData([pn3,filesep,'beads.tif']);
+        dataTemp = load_tiff([pnc,filesep,'beads.tif']);
         data1c = dataTemp(:,:,2:2:end);
         data2c = dataTemp(:,end:-1:1,1:2:end-1);
     end
