@@ -10,15 +10,12 @@ settings.method = 'sofibp';
 
 %% loading data
 
-data1 = load_tifFile([settings.io.imagePath,filesep, ...
+[data1, frames1] = load_tiff([settings.io.imagePath,filesep, ...
     settings.io.imageName, settings.io.fext],settings.sys.sub);
-data2 = load_tifFile([settings.io.imagePath2,filesep, ...
+[data2, frames2] = load_tiff([settings.io.imagePath2,filesep, ...
     settings.io.imageName2, settings.io.fext],settings.sys.sub);
 
 data2 = flip(data2, 2);
-
-[~,~,frames1] = size(data1);
-[~,~,frames2] = size(data2);
 frames = min([frames1,frames2]);
 
 % apply channel weights
