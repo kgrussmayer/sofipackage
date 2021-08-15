@@ -1,17 +1,8 @@
 function [stack,frames] = loadStack(settings, str)
 % load standard tif or big tif file
 
-stack = load_tifFile([settings.io.imageFile, str],settings.sys.sub,settings.io.roi);
-
-frames=size(stack,3);
-
-try
-    if  size(stack,3) == 1 % the stack needs to be loaded as a big tiff file
-        [stack,frames] = load_bigtif([settings.io.imageFile],settings.sys.sub);
-    end
-catch
-    disp('load_bigtif failed');
-end
+[stack, frames] = load_tiff([settings.io.imageFile, str], ...
+    settings.sys.sub, settings.io.roi);
 
 if settings.io.ro ==1 % reorder the stack - for Nikon Leuven setup
     stack2 = stack;

@@ -35,14 +35,14 @@ settings.method = 'sofimc';
 
 %% Load data
 disp('Loading reflected data')
-imstack1 = load_tifFile([settings.io.imagePath,filesep,...
+imstack1 = load_tiff([settings.io.imagePath,filesep,...
     settings.io.imageName,settings.io.fext],settings.sys.sub);
 disp('Loading transmitted data')
-imstack2 = load_tifFile([settings.io.imagePath,filesep,...
+imstack2 = load_tiff([settings.io.imagePath,filesep,...
     settings.io.imageName2,settings.io.fext],settings.sys.sub);
 % flip experimental data from second camera
 if strcmp(settings.io.dataType,'exper')
-    imstack2=flip(imstack2,2);
+    imstack2 = flip(imstack2,2);
 end
 
 %% Main Program
