@@ -61,7 +61,7 @@ end
         fid = fopen(pn1);
     else
     	disp('loading data')
-        dataTemp = imread_big(pn1);
+        dataTemp = load_tiff(pn1);
         % flip camera 2
         for k = 2:2:size(dataTemp,3)
         	dataTemp(:,:,k) = fliplr(dataTemp(:,:,k));
@@ -118,7 +118,6 @@ end
             fr=sys.start+(ns-1)*sys.subseqstep-1+(1:sys.subseqlength);
             data1 = dataTemp(:,:,2*fr(1):2:2*fr(1)+2*sys.subseqlength-1);
             data2 = dataTemp(:,:,2*fr(1)+1:2:2*fr(1)+2*sys.subseqlength);
-            % TODO: modify imread_big to load only selected frames
         end
 
         %%% Reorder planes for data using new prism
