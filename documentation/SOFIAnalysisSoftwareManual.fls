@@ -1,4 +1,4 @@
-PWD /Users/localadmin/Arbeit/SOFIManualReadmeSpecifications
+PWD /Users/localadmin/gitRepositories/sofi2d-Github/documentation
 INPUT /usr/local/texlive/2020/texmf-var/web2c/luahbtex/lualatex.fmt
 INPUT ./SOFIAnalysisSoftwareManual.tex
 OUTPUT SOFIAnalysisSoftwareManual.log

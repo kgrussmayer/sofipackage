@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1619034482 "SOFIAnalysisSoftwareManual.tex" "SOFIAnalysisSoftwareManual.pdf" "SOFIAnalysisSoftwareManual" 1619034486
+["pdflatex"] 1629105739 "SOFIAnalysisSoftwareManual.tex" "SOFIAnalysisSoftwareManual.pdf" "SOFIAnalysisSoftwareManual" 1629105743
   "/Users/localadmin/Library/texlive/2020/texmf-var/luatex-cache/generic-dev/fonts/otl/lmroman10-bold.luc" 1617988016 124231 0da642536c2efdaf3b85e365d12a01e1 ""
   "/Users/localadmin/Library/texlive/2020/texmf-var/luatex-cache/generic-dev/fonts/otl/lmroman10-regular.luc" 1617988015 123160 fae69f77759c5c9c8b33ffe7ddbbe92a ""
   "/Users/localadmin/Library/texlive/2020/texmf-var/luatex-cache/generic-dev/fonts/otl/texgyrecursor-bold.luc" 1617988017 124025 f6f3d68e25f9376189bd84d3059b531d ""
@@ -240,16 +240,16 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1586288239 4811913 0be9a7e86c70a26e5e3042966bcd7097 ""
   "/usr/local/texlive/2020/texmf-var/tex/generic/config/language.dat.lua" 1586288234 17565 0ee337fcd67b6178ea3d5c57f657fb96 ""
   "/usr/local/texlive/2020/texmf-var/web2c/luahbtex/lualatex.fmt" 1616854321 2691551 a9bcc1ed2f54e3443b31edb568a4a72a ""
-  "SOFIAnalysisSoftwareManual.aux" 1619034486 7237 74b333b08124dde6b4b9c355e5b8da17 "pdflatex"
-  "SOFIAnalysisSoftwareManual.out" 1619034484 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "SOFIAnalysisSoftwareManual.tex" 1619034480 19674 76d84559328c5b9a2b74dd481d25fce4 ""
+  "SOFIAnalysisSoftwareManual.aux" 1629105743 7237 196f58e97144ed376a4d57908afb1aaf "pdflatex"
+  "SOFIAnalysisSoftwareManual.out" 1629105741 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "SOFIAnalysisSoftwareManual.tex" 1622556159 19808 80a8040741baa6ef08bccd9bccc78e0f ""
   "figures/4thOrderMultiplaneCumulant.png" 1618558515 52726 1b5afdf84d242e7e69f858d23efc9806 ""
   "figures/cross-cumulantCalculation.png" 1618558796 157577 6e90f2c96a4cc7b85914ea9096558762 ""
   "figures/multiplaneWorkflow.png" 1618558492 421481 6c31a4fe252b1f6e95c4a732880f78be ""
   "figures/pone.0161602.g003.PNG_L.png" 1618559352 458708 a543d118cb46af03c373c2c08d446c26 ""
   "ksgstyle.sty" 1584380388 2678 f7d58874e0a566bd6f4cca371147d186 ""
   (generated)
-  "SOFIAnalysisSoftwareManual.pdf"
-  "SOFIAnalysisSoftwareManual.log"
   "SOFIAnalysisSoftwareManual.out"
+  "SOFIAnalysisSoftwareManual.log"
+  "SOFIAnalysisSoftwareManual.pdf"
   "SOFIAnalysisSoftwareManual.aux"

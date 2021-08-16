@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020)  (format=lualatex 2021.3.27)  1 JUN 2021 16:02
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020)  (format=lualatex 2021.3.27)  16 AUG 2021 11:22
  restricted system commands enabled.
  file:line:error style messages enabled.
 **SOFIAnalysisSoftwareManual.tex
@@ -2314,27 +2314,105 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 $
 l.173 ...y saved and have respective file endings: _
                                                   CX raw cumulants with X cu...
-? 
-./SOFIAnalysisSoftwareManual.tex:173: Emergency stop.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./SOFIAnalysisSoftwareManual.tex:174: Missing $ inserted.
 <inserted text> 
 $
-l.173 ...y saved and have respective file endings: _
-                                                  CX raw cumulants with X cu...
-End of file on the terminal!
+l.174 
+    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
 
+Overfull \hbox (228.35272pt too wide) in paragraph at lines 172--174
+\TU/TeXGyrePagella(0)/m/n/10 re-sults are di-rectly saved and have re-spec-tive file end-ings: $[][]\TU/TeXGyrePagellaMath(1)/m/n/10 
+𝑋𝑟𝑎𝑤𝑐𝑢𝑚𝑢𝑙𝑎𝑛𝑡𝑠𝑤𝑖𝑡ℎ𝑋𝑐
+𝑢𝑚𝑢𝑙𝑎𝑛𝑡𝑜𝑟𝑑𝑒𝑟,[] 𝑂𝐹𝐼𝑋𝑓𝑜
+𝑟𝑠𝑡𝑎𝑛𝑑𝑎𝑟𝑑𝑝𝑟𝑜𝑐𝑒𝑠𝑠𝑖𝑛𝑔
+𝑜𝑟[]𝑂𝐹𝐼[]𝑖𝑛𝑋𝑓𝑜𝑟𝑎𝑑𝑎𝑝𝑡𝑖𝑣
+𝑒𝑙𝑖𝑛𝑒𝑎𝑟𝑖𝑧𝑎𝑡𝑖𝑜𝑛$ 
+ []
+
+[4<./figures/pone.0161602.g003.PNG_L.png>] [5] [6] [7]
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {english/script}  =>  {latin}
+>  {english/lcscript}  =>  {latin}
+>  {english/scripttag}  =>  {}
+>  {english/language}  =>  {English}
+>  {english/langtag}  =>  {ENG}
+>  {english/bcp47}  =>  {en-US}
+>  {english/hyphennames}  =>  {english,american,usenglish,USenglish}
+>  {english/direction}  =>  {LR}
+>  {english/hyphenmins}  =>  {2,3}
+>  {english/frenchspacing}  =>  {false}
+>  {english/indentfirst}  =>  {false}
+>  {english/fontsetup}  =>  {true}
+>  {english/envname}  =>  {english}
+>  {english/babelname}  =>  {american}
+>  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}.
+ [8] [9<./figures/multiplaneWorkflow.png>] [10<./figures/4thOrderMultiplaneCumul
+ant.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 310.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 310.
+
+(./SOFIAnalysisSoftwareManual.aux
+LaTeX Info: Redefining \rmfamily on input line 25.
+LaTeX Info: Redefining \sffamily on input line 25.
+LaTeX Info: Redefining \ttfamily on input line 25.
+luaotfload | aux : font no 48 (nil) defines no feature for script latn with lang
+uage eng)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 310.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 310.
+Package rerunfilecheck Info: File `SOFIAnalysisSoftwareManual.out' has not chang
+ed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+)
 
 Here is how much of LuaTeX's memory you used:
- 39318 strings out of 480992
- 156265,1648299 words of node,token memory allocated 97142 words of node memory still in use:
-   3539 hlist, 10 vlist, 1344 rule, 313 disc, 17 local_par, 1 dir, 2612 glue, 24
-35 kern, 61 penalty, 3 margin_kern, 1530 glyph, 1433 attribute, 66 glue_spec, 14
-33 attribute_list, 1 temp, 6 write, 16 pdf_literal, 13 pdf_dest, 466 pdf_colorst
-ack, 3 pdf_setmatrix, 3 pdf_save, 3 pdf_restore nodes
-   avail lists: 1:4,2:1122,3:62,4:177,5:981,6:16,7:1959,8:15,9:1827,10:37,11:165
-,12:1
- 55612 multiletter control sequences out of 65536+600000
- 118 fonts using 27648847 bytes
+ 39534 strings out of 480992
+ 305233,1648299 words of node,token memory allocated
+ 1081 words of node memory still in use:
+   22 hlist, 2 vlist, 10 rule, 2 glue, 4 kern, 1 glyph, 55 attribute, 66 glue_sp
+ec, 55 attribute_list, 2 write, 16 pdf_literal, 16 pdf_colorstack nodes
+   avail lists: 1:4,2:6854,3:168,4:1174,5:6331,6:40,7:10764,8:104,9:12369,10:38,
+11:815,12:1
+ 55703 multiletter control sequences out of 65536+600000
+ 118 fonts using 27648795 bytes
  89i,7n,121p,10141b,1342s stack positions out of 5000i,500n,10000p,200000b,100000s
-./SOFIAnalysisSoftwareManual.tex:173:  ==> Fatal error occurred, no output PDF f
-ile produced!
+</usr/local/texlive/2020/texmf-dist/fonts/opentype/public/tex-gyre-math/texgyrep
+agella-math.otf></usr/local/texlive/2020/texmf-dist/fonts/opentype/public/tex-gy
+re-math/texgyrepagella-math.otf></usr/local/texlive/2020/texmf-dist/fonts/openty
+pe/public/tex-gyre/texgyrecursor-regular.otf></usr/local/texlive/2020/texmf-dist
+/fonts/opentype/public/tex-gyre/texgyrepagella-regular.otf></usr/local/texlive/2
+020/texmf-dist/fonts/opentype/public/tex-gyre/texgyrepagella-italic.otf>
+Output written on SOFIAnalysisSoftwareManual.pdf (10 pages, 1032026 bytes).
+
+PDF statistics: 311 PDF objects out of 1000 (max. 8388607)
+ 258 compressed objects within 3 object streams
+ 165 named destinations out of 1000 (max. 131072)
+ 256 words of extra memory for PDF output out of 10000 (max. 100000000)
+
