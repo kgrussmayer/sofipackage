@@ -8,10 +8,6 @@ function stack = driftcor(stack,settings)
 
     drift = load([settings.io.imageFile,settings.dcor.tag,'.mat']);
     drift = drift.drift;
-%     drift = drift_corr;
-%      drift = drift;
-%     pxsize = 104.8; % projected pixel size in nm (Hendrik's setup)
-%     pxsize = 16000/166.6; % projecte pixel size in nm (sofi setup)
     
     pxsize = settings.sys.pxy;
     
@@ -37,3 +33,4 @@ function stack = driftcor(stack,settings)
     end
 
 end
+% eof

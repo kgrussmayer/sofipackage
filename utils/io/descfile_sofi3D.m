@@ -6,21 +6,29 @@ function descfile_sofi3D(settings)
 
 fnames = fieldnames(settings);
 clear A;
-A{1} = sprintf('%s','Description file for data generated using 2D SOFI'); 
+A{1} = sprintf('%s','Description file for data generated using the multiplane 3D SOFI');
 A{2} = sprintf('%s','----------------------------------------------------------------');
 A{3} = sprintf('%s','');
 
 ii = numel(A);ii = ii+1;
 
 for ff = 1:numel(fnames)
-
     A{ii} = sprintf('%s',['Settings.',fnames{ff}]); ii = ii+1;
-    subfnames = fieldnames(eval(['settings.',fnames{ff}]));
-    for gg = 1:numel(subfnames)
+    if isstruct(eval(['settings.',fnames{ff}]))
+        subfnames = fieldnames(eval(['settings.',fnames{ff}]));
+        
+        for gg = 1:numel(subfnames)
+            try
+                A{ii} = sprintf('%s',['Settings.',fnames{ff},'.',subfnames{gg},' = ',...
+                    num2str(getfield(settings,fnames{ff},subfnames{gg}))]);ii = ii+1;
+            catch
+            end
+        end
+    else
         try
-            A{ii} = sprintf('%s',['Settings.',fnames{ff},'.',subfnames{gg},' = ',...
-                    num2str(getfield(settings,fnames{ff},subfnames{gg}))]);ii = ii+1; 
-        catch err
+            A{ii} = sprintf('%s',['Settings.',fnames{ff},' = ',...
+                settings.(fnames{ff})]);ii = ii+1;
+        catch
         end
     end
     A{ii} = sprintf('%s','.....');ii = ii+1;
@@ -42,4 +50,4 @@ for i = 1:ii
     end
 end
 fclose(fid);
-
+% eof

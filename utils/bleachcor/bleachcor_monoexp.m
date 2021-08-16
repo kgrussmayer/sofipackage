@@ -16,7 +16,4 @@ for ii = 1:frames
     mitrace_cor(ii) = results.blcor.mitrace(ii)/(results.blcor.fitcurve(ii));
 end
 results.blcor.mitrace_cor = mitrace_cor;
-% [corela] = stackcorel(stack,settings.blcor.MaxCorrSamp);
-% results.blcor.corela_cor = corela;
-
-    
+% eof

@@ -26,11 +26,12 @@ fitcurve = a*exp(-x/b)+c;
 settings.blcor.fitinfo = c2;
 settings.blcor.fitcurve = fitcurve;
 
-    % plot and save meantrace figure
-    figure,
-    plot(x',mitrace);hold on;plot(x,fitcurve,'k');
-    ylabel('Mean intensity');xlabel('Number of frames');
-    title(['Bleaching estimation, average bleaching lifetime ',num2str(b),' frames']); 
-    
-    saveFigure(gcf,[settings.io.outputpath,filesep,'figs'],[settings.io.imageName,'_meantrace'],settings.io.figformat,0);
+% plot and save meantrace figure
+figure,
+plot(x',mitrace);hold on;plot(x,fitcurve,'k');
+ylabel('Mean intensity');xlabel('Number of frames');
+title(['Bleaching estimation, average bleaching lifetime ',num2str(b),' frames']); 
+
+saveFigure(gcf,[settings.io.outputpath,filesep,'figs'],[settings.io.imageName,'_meantrace'],settings.io.figformat,0);
 end
+% eof

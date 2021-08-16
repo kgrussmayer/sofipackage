@@ -1,4 +1,4 @@
-function StackFilt = bleachcor_iir(stack,settings)
+function StackFilt = bleachcor_iir(stack, settings)
 %  wraper function for various bleaching correction algorithms 
 
 % IMAGE SETTINGS
@@ -84,9 +84,10 @@ S.He = 720;  % Default height of figures
 disp(horzcat('Optimum IIR Filter: ',S.FiltType,' Order: ',num2str(S.FiltOrderOpt),' CF: ',num2str(S.CfOpt)));
 
 N = length(Correlations(:,1));
-Cls = jet(N);Legends = [];
+Cls = jet(N);
 
-f0 = figure('name','IRR Sweep','position',[S.Width/2 - S.Wi/2,S.Height/2-S.He/2,S.Wi,S.He]);
+Legends = cell(N,1);
+figure('name','IRR Sweep','position',[S.Width/2 - S.Wi/2,S.Height/2-S.He/2,S.Wi,S.He]);
 for i = 1:N
 
     plot(Correlations(i,:),'color',Cls(i,:),'linewidth',S.Lw);
@@ -100,15 +101,15 @@ ylabel('Correlation [-]','FontSize',S.FontSize);
 legend(Legends,'Optimal'); %Legends /  TOO MANY
 clear Legends;
 
-[~,~,Ht,~,Nh,Fig] = DIPFilterConstruction('high',S.FiltType,S.CfOpt,[],S.FiltOrderOpt,S.FiltPassRip,S.FiltStopRip,S.ShowFilt);
+[~,~,Ht,~,Nh,~] = DIPFilterConstruction('high',S.FiltType,S.CfOpt,[],S.FiltOrderOpt,S.FiltPassRip,S.FiltStopRip,S.ShowFilt);
 
 [Y,X,Zs] = size(stack);
 %     [Y,X,Z] = size(Stack);
 
- Nfft = 2^(ceil(log2(Nh+Zs-1)));
+% Nfft = 2^(ceil(log2(Nh+Zs-1)));
 Nfft = 2*Nh + Zs + 1;
 Hzp = fft([Ht',zeros(1,Nfft-Nh)]);
-StackFilt = zeros(Y,X,Nfft);
+% StackFilt = zeros(Y,X,Nfft);
 stack = cat(3,stack,zeros(Y,X,Nfft-Zs));
 StackFilt = fft(stack,[],3);
 for i =1:Nfft
@@ -130,8 +131,6 @@ mitrace=squeeze(mean(mean(stack,1),2));
 if(isequal(S.ShowMITrace,1))
     MIFilt = squeeze(mean(mean(StackFilt,1),2));
     MIFilt = MIFilt./(max(MIFilt));
-%     MIExp = squeeze(mean(mean(StackExp,1),2));
-%     MIExp = MIExp./max(MIExp);
     XAxis = (0:S.NumImages-1);
     Legends = [];
     f1 = figure('name','MEAN TRACE','position',[S.Width/2 - S.Wi/2,S.Height/2-S.He/2,S.Wi,S.He]);
@@ -139,14 +138,8 @@ if(isequal(S.ShowMITrace,1))
     Legends{1} = 'Mean Trace - Original Image';
     hold on;grid on;
     
-%     plot(XAxis,MIExp,'color',S.Cl3,'linewidth',S.Lw);
-%     Legends{2} = 'Mean Trace after inverse fitting';
-    
     plot(XAxis,MIFilt,'color',S.Cl4,'linewidth',S.Lw);
     Legends{2} = 'Mean Trace after filtration';
-    
-%     plot(XAxis,C2.a*exp(-XAxis/C2.b)+C2.c,'color',S.Cl2,'linewidth',S.Lw);
-%     Legends{2} = 'Exponential Fit Curve';
     
     ylabel('Intensity [-]','FontSize',S.FontSize);
     xlabel('Image Frame [-]','FontSize',S.FontSize);
@@ -171,14 +164,13 @@ CorelAx = 1:S.MaxCorrSamp;
 clear X;
 
 Corela = Corela./max(Corela(:));
-%     CorelaExp = CorelaExp./max(CorelaExp(:));
 CorelaFilt = CorelaFilt./max(CorelaFilt(:));
 
-f3 = figure('name','Correlation','position',[S.Width/2 - S.Wi/2,S.Height/2-S.He/2,S.Wi,S.He]);
+figure('name','Correlation','position',[S.Width/2 - S.Wi/2,S.Height/2-S.He/2,S.Wi,S.He]);
 plot(CorelAx,Corela,'color',S.Cl1,'linewidth',S.Lw);
 hold on;grid on;
-%     plot(CorelAx,CorelaExp,'color',S.Cl2,'linewidth',S.Lw);
 plot(CorelAx,CorelaFilt,'color',S.Cl3,'linewidth',S.Lw);
 legend('Without Bleaching Correction','Basic Bleaching Correction','Advanced Bleaching Correction');
 xlabel('\tau','FontSize',S.FontSize);
 ylabel('R(\tau)','FontSize',S.FontSize);
+% eof

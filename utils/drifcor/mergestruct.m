@@ -28,5 +28,6 @@ end
 fn=fieldnames(s2);
 s=s1;
 for i=1:length(fn)              
-    s=setfield(s,fn{i},getfield(s2,fn{i}));
+    s.(fn{i})=s2.(fn{i});
 end
+% eof

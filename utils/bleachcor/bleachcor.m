@@ -1,5 +1,5 @@
 function [stack,results] = bleachcor(stack,settings,results)
-%  wraper function for various bleaching correction algorithms 
+% wraper function for bleaching correction algorithms 
 %
 % input:    stack ... sequence of input images acquired by camera
 %           settings ... struct with all the processing settings
@@ -15,13 +15,6 @@ switch settings.blcor.type
     case 'iir'
         % IIR filtering
         stack = bleachcor_iir(stack,settings);
-        
-    case 'PCA'
-        % PCA based bleaching correction from Lille
-        stack = bleachcor_pca(stack,settings);
-    
-end
 
-%%
-% figure, 
-% imshow(mean(stack2,3),[]);
+end
+% eof

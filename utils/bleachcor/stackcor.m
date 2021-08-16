@@ -12,5 +12,4 @@ function [ XX ] = stackcorel(stack,MaxCorrSamp)
 corela = abs(ifft(abs(fft(cat(3,stack,zeros(sy,sx,sz)),[],3)).^2,[],3));
 corela = squeeze(mean(mean(corela,1),2));
 XX.Corela = corela(1:MaxCorrSamp);
-
-end
+% eof

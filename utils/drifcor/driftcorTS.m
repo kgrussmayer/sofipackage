@@ -1,4 +1,4 @@
-function stack = driftcorTS(stack,settings,frames)
+function stack = driftcorTS(stack,settings, frames)
 % drift correction in lateral direction based on fiducial markers 
 % using drift corr data from ThunderSTORM
 %
@@ -8,30 +8,24 @@ function stack = driftcorTS(stack,settings,frames)
 
     
     data = loadjson([settings.io.imagePath,filesep,settings.io.imageName,'_drift.json']);
-%     data = loadjson([settings.io.imagePath,filesep,'resultsTS',filesep,settings.io.imageName,'.tif-resultsdriftcor.json']);
     
     polyy = [];
     polyx = [];
 
     for ii = 1:data.yFunction.n
         disp(ii)
-    %     polyy = [polyy,polyval(data.yFunction.polynomials{ii}.coefficients,...
-    %         linspace(1,2,length(data.yFunction.knots(ii):data.yFunction.knots(ii+1))-1)-1)];
         polyy = [polyy,polyval(data.yFunction.polynomials{ii}.coefficients,...
             ones(1,data.yFunction.knots(ii+1)-data.yFunction.knots(ii)))];
 
         polyx = [polyx,polyval(data.xFunction.polynomials{ii}.coefficients,...
             ones(1,data.xFunction.knots(ii+1)-data.xFunction.knots(ii)))];
 
-    %     polyy = [polyy,polyval(data.yFunction.polynomials{ii}.coefficients,data.yFunction.knots(ii):data.yFunction.knots(ii+1)-1)];
     end
 
     polyy = [polyy,polyval(data.yFunction.polynomials{end}.coefficients,1)];
     polyx = [polyx,polyval(data.xFunction.polynomials{end}.coefficients,1)]; 
     
     drift = [polyx', polyy'];
-%     pxsize = 104.8; % projected pixel size in nm (Hendrik's setup)
-%     pxsize = 16000/166.6; % projecte pixel size in nm (sofi setup)
     
     pxsize = settings.sys.pxy;
     
@@ -58,3 +52,4 @@ function stack = driftcorTS(stack,settings,frames)
     end
 
 end
+% eof

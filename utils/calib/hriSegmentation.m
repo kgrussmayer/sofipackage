@@ -21,31 +21,23 @@ function out=hriSegmentation(Id,bgth,LoGsize,out)
 %      Laboratoire d'optique biomedicale, LOB
 %      Biomedical imaging group, BIG
 
-%Compute Laplacian of Gaussian
+% Compute Laplacian of Gaussian
 Is=LaplacianOfGaussian(Id,LoGsize);
 
-% imagesp(Is,'LoG(Id)');
-% disp(min(Is(:)));
-
-%subtract background
-% out.bgmap=double((Is<min(Is(:))*bgth));
+% subtract background
 out.bgmap=double((Is<bgth));
 Is=out.bgmap.*Id;
 
-% imagesp(Is,'Background subtracted');
-
-%segment processed image
+% segment processed image
 if any(Is(:))
     [S,n]=segmentImage(Is);
-% imagesp((S>0),'Segments');
 
-% imagesp(S,'Segments');
-
-%analyze segments
-    [out.segx,out.segy,out.segA,out.segE]=analyzeSegments(S,Id,n,1); %ms=1 (Minimum subtraction on)
+% analyze segments
+    [out.segx,out.segy,out.segA,out.segE]=analyzeSegments(S,Id,n,1); % ms=1 (Minimum subtraction on)
 else
     out.segx = [];
     out.segy = [];
     out.segA = [];
     out.segE = [];
 end
+% eof

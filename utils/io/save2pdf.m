@@ -21,7 +21,7 @@
 function save2pdf(pdfFileName,handle,dpi)
 
 % Verify correct number of arguments
-error(nargchk(0,3,nargin));
+narginchk(0,3);
 
 % If no handle is provided, use the current figure as default
 if nargin<1
@@ -51,7 +51,6 @@ set(handle,'PaperUnits','inches');
 set(handle,'Units','inches');
 
 % Set the page size and position to match the figure's dimensions
-paperPosition = get(handle,'PaperPosition');
 position = get(handle,'Position');
 set(handle,'PaperPosition',[0,0,position(3:4)]);
 set(handle,'PaperSize',position(3:4));
@@ -65,3 +64,4 @@ set(handle,'PaperUnits',prePaperUnits);
 set(handle,'Units',preUnits);
 set(handle,'PaperPosition',prePaperPosition);
 set(handle,'PaperSize',prePaperSize);
+% eof

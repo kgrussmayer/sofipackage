@@ -11,3 +11,4 @@ for k=1:frames
     imReg(isnan(imReg)) = 0;
     imgs(:,:,k)=imReg;
 end
+% eof
