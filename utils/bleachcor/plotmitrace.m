@@ -61,6 +61,10 @@ else
     opts = optimset('MaxFunEvals', 50000, 'MaxIter', 10000);
     p0 = [1 1 1];
     P = fminsearch(cost, p0, opts);
+    % assign estimated parameters
+    a = P(1);
+    b = 1/P(2);
+    c = P(3);
     % evaluate fitted function
     fitcurve = f(P, x);
     results.blcor.fitinfo = [];
