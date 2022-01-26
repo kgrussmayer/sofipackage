@@ -59,7 +59,7 @@ else
     % objective function to minimize: ordinary least squares for now
     cost = @(p) sum((f(p, x) - y).^2);
     opts = optimset('MaxFunEvals', 50000, 'MaxIter', 10000);
-    p0 = [1 1 1];
+    p0 = [1 1/100 1];
     P = fminsearch(cost, p0, opts);
     % assign estimated parameters
     a = P(1);
