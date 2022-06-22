@@ -6,10 +6,15 @@ function [settings,results] = plotmitrace(stack,settings)
 %           settings ... struct with all the processing settings
 
 frames = size(stack,3);
+x=(0:frames-1);
+
 mitrace=squeeze(mean(mean(stack,1),2));
 mitrace = mitrace./max(mitrace);
 
-if contains(struct2array(ver), 'Curve Fitting Toolbox')
+%create string with installed packages
+s=strjoin(struct2cell(ver),' ' );
+
+if contains(s, 'Curve Fitting Toolbox')
     % this version uses the curve fitting toolbox
     s = fitoptions('Method','NonlinearLeastSquares',...
                    'Lower',[0,0,0],...
@@ -22,13 +27,10 @@ if contains(struct2array(ver), 'Curve Fitting Toolbox')
     b = c2.b;
     c = c2.c;
 
-    x=(0:frames-1);
     fitcurve = a*exp(-x/b)+c;  
     results.blcor.fitinfo = c2;
-elseif contains(struct2array(ver), 'Statistics and Machine Learning Toolbox')
+elseif contains(s, 'Statistics and Machine Learning Toolbox')
     % this version uses fitnlm from Statistics package 
-    x=(0:frames-1);
-
     % Convert X and Y into a table
     tbl = table(x', mitrace);
     % define the model as Y = a*exp(-t/b)+c
@@ -51,7 +53,6 @@ elseif contains(struct2array(ver), 'Statistics and Machine Learning Toolbox')
 else
     % without any toolbox
     % fit inputs in the same shape: frame index as time, mean intensity
-    x = (0:frames-1);
     y = mitrace';
     % exponential function with offset a*exp(-l*t)+c
     % with parameters vector p = [a, l, c]

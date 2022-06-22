@@ -218,6 +218,14 @@ for j=1:3
                 compilerfilenames{n}=filename;
                 compilerfilenamesbat{n}='vcvars32.bat';
             end
+            filename=[str '\' a(i).name '\2017\Community\VC\Auxiliary\Build\'];
+            filenamebat=[filename 'vcvars64.bat'];
+            disp(filename);
+            if(exist(filenamebat,'file'))
+                n=n+1;
+                compilerfilenames{n}=filename;
+                compilerfilenamesbat{n}='vcvars64.bat';
+            end
         end
     end
 end

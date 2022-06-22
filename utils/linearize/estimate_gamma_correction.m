@@ -57,17 +57,43 @@ for k = 1:k
         trace = trace(maxlag:end)./(maxlag);
         
         frames = length(trace);
+        x=(1:frames-1);
         
-        s = fitoptions('Method','NonlinearLeastSquares',...
-            'Lower',[0,0,0],...
-            'Upper',[Inf,Inf,Inf],...
-            'Startpoint',[1 1 1]);
-        f = fittype('a*exp(-x/b)+c','options',s);
-        
-        [c2,~] = fit((1:frames-1)',trace(2:end),f);
-        a = c2.a;
-        b = c2.b;
-        c = c2.c;
+        if contains(struct2array(ver), 'Curve Fitting Toolbox')
+        % this version uses the curve fitting toolbox
+
+            s = fitoptions('Method','NonlinearLeastSquares',...
+                'Lower',[0,0,0],...
+                'Upper',[Inf,Inf,Inf],...
+                'Startpoint',[1 1 1]);
+            f = fittype('a*exp(-x/b)+c','options',s);
+
+            [c2,~] = fit(x',trace(2:end),f);
+            a = c2.a;
+            b = c2.b;
+            c = c2.c;
+        elseif contains(struct2array(ver), 'Statistics and Machine Learning Toolbox')
+            % this version uses fitnlm from Statistics package 
+            % Convert X and Y into a table
+            tbl = table(x', trace(2:end));
+            % define the model as Y = a*exp(-t/b)+c
+            modelfun = @(b,t)  b(1)*exp(-t(:, 1)/b(2))+ b(3) ;  
+            beta0 = [-1, 100, 100];  
+            % actual model computation
+            mdl = fitnlm(tbl, modelfun, beta0);
+
+            % Extract the coefficient values from the the model object.
+            % The actual coefficients are in the "Estimate" column of the "Coefficients" table that's part of the mode.
+            coefficients = mdl.Coefficients{:, 'Estimate'};
+
+            a = coefficients(1);
+            b = coefficients(2);
+            c = coefficients(3);
+            disp('utils.linearize.estimate_gamma_correction: Fit using fitnlm without parameter bounds: Please check the fit quality.')
+        else
+            disp("Fitting without packages to be added")
+        end
+
         
         N = sqrt(a);
         parmap(ii,k).N = N;
