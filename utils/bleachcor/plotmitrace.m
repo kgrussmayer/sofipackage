@@ -11,7 +11,10 @@ x=(0:frames-1);
 mitrace=squeeze(mean(mean(stack,1),2));
 mitrace = mitrace./max(mitrace);
 
-if contains(struct2array(ver), 'Curve Fitting Toolbox')
+%create string with installed packages
+s=strjoin(struct2cell(ver),' ' );
+
+if contains(s, 'Curve Fitting Toolbox')
     % this version uses the curve fitting toolbox
     s = fitoptions('Method','NonlinearLeastSquares',...
                    'Lower',[0,0,0],...
@@ -26,7 +29,7 @@ if contains(struct2array(ver), 'Curve Fitting Toolbox')
 
     fitcurve = a*exp(-x/b)+c;  
     results.blcor.fitinfo = c2;
-elseif contains(struct2array(ver), 'Statistics and Machine Learning Toolbox')
+elseif contains(s, 'Statistics and Machine Learning Toolbox')
     % this version uses fitnlm from Statistics package 
     % Convert X and Y into a table
     tbl = table(x', mitrace);
