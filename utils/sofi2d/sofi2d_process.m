@@ -58,6 +58,8 @@ function [sofi,sofi_c,settings,sofi_lin,sofi_dec,stats,results] = SOFI2D_process
     %
     %%% Bleaching correction
     %
+    disp('Calculating bleaching correction...')
+    
     [settings,results] = plotmitrace(stack,settings);
 
     if settings.io.blcor == 1
@@ -136,7 +138,7 @@ function [sofi,sofi_c,settings,sofi_lin,sofi_dec,stats,results] = SOFI2D_process
 		
     
     %% Calculate cumulants, perform flattening
-    disp('sofiCumulantsAll')
+    disp('Running sofiCumulantsAll')
     [sofi_c,settings,stats] = sofiCumulantsAll(stack, settings);
 
     % estmate drift from 2nd order sofi images
@@ -170,28 +172,30 @@ function [sofi,sofi_c,settings,sofi_lin,sofi_dec,stats,results] = SOFI2D_process
 
     %
     %%% Linearization and postprocessing
-    %
-    disp('SOFIAdalin computation')
-    sofi_lin = sofiAdalin(sofi_c, stack, settings); 
+    sofi_lin=[];
+    if settings.sys.orders(end)>=4
+        disp('SOFIAdalin computation')
+        sofi_lin = sofiAdalin(sofi_c, stack, settings); 
 
-    if settings.dec.denoise == 1 
-        [x,y]=xygrid(size(sofi_lin{2}(:,:,:)));
-        temp=interpolate_img(sofi_c{2}(:,:,:),x,y);
-    %     sofi_lin{2} = sum(temp.*sofi_lin{2}(:,:,:),3)./sum(temp,3);
-        sofi_lin{2} = temp.*sofi_lin{2}(:,:,:)./repmat(sum(temp,3),1,1,size(sofi_lin{2},3));
+        if settings.dec.denoise == 1 
+            [x,y]=xygrid(size(sofi_lin{2}(:,:,:)));
+            temp=interpolate_img(sofi_c{2}(:,:,:),x,y);
+        %     sofi_lin{2} = sum(temp.*sofi_lin{2}(:,:,:),3)./sum(temp,3);
+            sofi_lin{2} = temp.*sofi_lin{2}(:,:,:)./repmat(sum(temp,3),1,1,size(sofi_lin{2},3));
 
-        [x,y]=xygrid(size(sofi_lin{3}(:,:,:)));
-        temp=interpolate_img(sofi_c{3}(:,:,:),x,y);
-    %     sofi_lin{3} = sum(temp.*sofi_lin{3}(:,:,:),3)./sum(temp,3);
-        sofi_lin{3} = temp.*sofi_lin{3}(:,:,:)./repmat(sum(temp,3),1,1,size(sofi_lin{3},3));
+            [x,y]=xygrid(size(sofi_lin{3}(:,:,:)));
+            temp=interpolate_img(sofi_c{3}(:,:,:),x,y);
+        %     sofi_lin{3} = sum(temp.*sofi_lin{3}(:,:,:),3)./sum(temp,3);
+            sofi_lin{3} = temp.*sofi_lin{3}(:,:,:)./repmat(sum(temp,3),1,1,size(sofi_lin{3},3));
 
-        [x,y]=xygrid(size(sofi_lin{4}(:,:,:)));
-        temp=interpolate_img(sofi_c{4}(:,:,:),x,y);
-    %     sofi_lin{4} = sum(temp.*sofi_lin{4}(:,:,:),3)./sum(temp,3);
-        sofi_lin{4} = temp.*sofi_lin{4}(:,:,:)./repmat(sum(temp,3),1,1,size(sofi_lin{4},3));
+            [x,y]=xygrid(size(sofi_lin{4}(:,:,:)));
+            temp=interpolate_img(sofi_c{4}(:,:,:),x,y);
+        %     sofi_lin{4} = sum(temp.*sofi_lin{4}(:,:,:),3)./sum(temp,3);
+            sofi_lin{4} = temp.*sofi_lin{4}(:,:,:)./repmat(sum(temp,3),1,1,size(sofi_lin{4},3));
 
-    end
-    
+        end
+    end    
+
     disp('sofiLinearize')
     sofi=sofiLinearize(sofi_c,settings.dec.fwhm(1),settings.sys.orders,...
         settings.dec.iter,settings);
@@ -215,13 +219,17 @@ function [sofi,sofi_c,settings,sofi_lin,sofi_dec,stats,results] = SOFI2D_process
         end
     end
 
-    
     %% Save SOFI results
 
+    disp('Saving SOFI results')
     if settings.augLag.deconv
         sofiSaveResults(settings,sofi_c, sofi_lin, sofi, sofi_dec)
     else
-        sofiSaveResults(settings,sofi_c, sofi_lin, sofi)
+        if ~isempty(sofi_lin)
+            sofiSaveResults(settings,sofi_c, sofi_lin, sofi)
+        else
+            sofiSaveResults(settings,sofi_c, sofi)
+        end
     end
     
     %
