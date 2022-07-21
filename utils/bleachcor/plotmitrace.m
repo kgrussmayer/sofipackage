@@ -49,7 +49,7 @@ elseif contains(s, 'Statistics and Machine Learning Toolbox')
 
     fitcurve = a*exp(-x/b)+c;
     results.blcor.fitinfo = mdl;
-    disp('utils.bleachcorr.plotmitrace: Fit using fitnlm without parameter bounds: Please check the fit quality.')
+    %disp('utils.bleachcorr.plotmitrace: Fit using fitnlm without parameter bounds: Please check the fit quality.')
 else
     % without any toolbox
     % fit inputs in the same shape: frame index as time, mean intensity
