@@ -1,0 +1,7 @@
+no FRC :(
+
+Unrecognized function or variable 'dip_initialise'.
+
+Error in estimResol (line 15)
+    dip_initialise; % initialize dip image package
+-------------------------------------------------------
